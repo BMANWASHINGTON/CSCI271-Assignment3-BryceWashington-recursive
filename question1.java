@@ -28,7 +28,7 @@ I declare and confrim the follwing
 <Bryce Washington>
 *************************************************************/
 
-/***********************<question 1>************************************
+/***********************<recursiveLength>************************************
 Description: Recursively computes the number of characters in a string S
 
 Parameters: String s - the string of numbers being computed
