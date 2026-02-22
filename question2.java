@@ -6,8 +6,9 @@ OS: Ubuntu Debian Linux 21.1
 Compiler: javac 25.0.1
 Date: February 21, 2026
 
-Purpose: The purpose of this function is to read a string and
-         recusrively return the length of a string.
+Purpose: The purpose of this function is to read a string and a
+         single character & display the number of times it occurs
+         in string S. 
 *************************************************************/
 /*************************************************************
 I declare and confrim the following:
@@ -32,7 +33,7 @@ I declare and confrim the following:
 Description: Recursively counts how many times character c appears in string s
 
 Parameters: String s - the string 
-            char c - characyer to count
+            char c - character to count
             int i - current index being processed
 
 Pre: s must be a valid string
@@ -48,46 +49,52 @@ Calls: charCount (recursive call)
 ************************************************************************/
 import java.util.Scanner;
 
+//Recursive function to count occurrences of c in s
 public class question2{
   public static int charCount(String s, char c) {
+
+    // Base case: if the string is empty
     if (s.equals("")) {
       return 0;
     }
-
+    
+    //Checks first character
     int firstCount = (s.charAt(0) == c) ? 1 : 0;
 
+    // Recurse the rest of the string
     return firstCount + charCount(s.substring(1), c);
   }
 
 /*****************************<main>***************************************
-Description: reads a string from the user and prints its length using 
-             the recursive function recursiveLength
+Description: reads a string and character from the user and pritns the 
+             number of times the character appears in the string using 
+             the recursive function charCount()
 
 Parameters: n/a
 
-Pre: enter a valid string
+Pre: enter a valid string and single character
 
-Post: prints the length of the string
+Post: prints the number of occurrences of C in S
 
 Returns: (void)
 
 Called by: JVM runtime
 
-Calls: recursiveLength
+Calls: charCount
 ************************************************************************/
 
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
     
-    System.out.print("Enter a string: ");
-    String S = scanner.nextLine();
+    System.out.print("Enter a string: "); // User asked to enter string
+    String S = scanner.nextLine(); // String recieves input
 
-    System.out.print("Enter a character: ");
-    String input = scanner.nextLine();
-    char C = input.charAt(0);
+    System.out.print("Enter a character: "); // User aksed to enter character
+    String input = scanner.nextLine(); // Character is stored
+    char C = input.charAt(0); // Checks for that specific character
 
-    int occur = charCount(S, C);
-    System.out.println("Number of times: '" + C + "' occurs in S: " + occur);
+    int occur = charCount(S, C); // Calls charCount() function
+    System.out.println("Number of times: '" + C + "' occurs in S: " + occur); // Prints the number of occurrences
 
     scanner.close();
   }
